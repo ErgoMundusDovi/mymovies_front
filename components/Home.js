@@ -9,6 +9,7 @@ import styles from '../styles/Home.module.css';
 function Home() {
   const [likedMovies, setLikedMovies] = useState([]);
   const [moviesData, setMoviesData]=useState([]) 
+  const isLiked = likedMovies.some(movie => movie === data.movies.title);
   
   // Liked movies (inverse data flow)
   const updateLikedMovies = (movieTitle) => {
@@ -45,7 +46,6 @@ useEffect(()=>{
 
 
 const movies = moviesData.map((data, i) => {
-  const isLiked = likedMovies.some(movie => movie === data.movies.title);
   return <Movie key={i} updateLikedMovies={updateLikedMovies} isLiked={isLiked} title={data.title} 
   overview={data.overview} poster={'https://image.tmdb.org/t/p/w500'+data.poster_path} 
   voteAverage={data.vote_average} voteCount={data.vote_count} />;
